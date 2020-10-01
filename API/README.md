@@ -9,12 +9,12 @@ Set of API endpoints to be consumed by the School Health Surveillance [Dashboard
 The API offers the following set of endpoints:
 
 
-  | REQUEST      | ROUTE                               | FUNCTIONALITY  |
-  |--------------|-------------------------------------|--------------------------------------------------------------------|------------|
-  |  POST        | /signup                        | Register a user                                                    |
-  |  POST        | /login                         | Login a user                                                       |
-  |  GET         | /cases                            | Fetch all cases stored in the database                                   |
-  |  GET         | [school]/cases                 | Fetch all cases registered under a particular school|
+  | REQUEST      | ROUTE             | FUNCTIONALITY                                       |
+  |--------------|-------------------|-----------------------------------------------------|
+  |  POST        | /signup           | Register a user                                     |
+  |  POST        | /login            | Login a user                                        |
+  |  GET         | /cases            | Fetch all cases stored in the database              |
+  |  GET         | [school]/cases    | Fetch all cases registered under a particular school|
  
 ## Getting started
 These instructions will get you a copy of the program on your local machine for development and testing purposes.
