@@ -1,15 +1,8 @@
 import os
-import re
 
 import psycopg2
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-
-# from APIs import app
-# from APIs.models.eg1 import tasks
-# from APIs.models.eg1 import tasks
-
-# from passlib.hash import pbkdf2_sha256 as sha256
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
@@ -17,68 +10,34 @@ CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
 
 class DatabaseConnection:
     def __init__(self):
-        db = 'postgres'
-        if os.getenv('APP_SETTINGS') == 'testing':
-            db = 'trial_test_db'
+        db = 'shs'
         conn = psycopg2.connect(
-            host="localhost", database=db, user="postgres", password="postgres")
+            host="localhost", database=db, user="postgres", password="psql", port=5433)
         conn.autocommit = True
         self.cursor = conn.cursor()
         print(self.cursor)
         print(db)
-        users_table = """CREATE TABLE IF NOT EXISTS usersTab(
-             employee_no VARCHAR(25) PRIMARY KEY,
-             user_name VARCHAR(25) UNIQUE NOT NULL,
-             user_email VARCHAR(25) UNIQUE NOT NULL,
-             user_password VARCHAR(225) NOT NULL
-         )"""
-        self.cursor.execute(users_table)
-        # insert_user1 = "INSERT INTO usersTab (employee_no, user_name, user_email, user_password) values ('moh123', 'nan','nanao@moh.com', 'letmeguess')"
-        # self.cursor.execute(insert_user1)
-
-        cases_table = """CREATE TABLE IF NOT EXISTS cases(
-             case_no SERIAL PRIMARY KEY,
-             disease VARCHAR(25) NOT NULL,
-             school VARCHAR(50) NOT NULL,
-             parish VARCHAR(25) NOT NULL,
-             sub_county VARCHAR(25) NOT NULL,
-             district VARCHAR(25) NOT NULL,
-             region VARCHAR(25) NOT NULL
-         )"""
-        self.cursor.execute(cases_table)
-
-        # insert_case1 = "INSERT INTO cases (disease, school, parish, sub_county, district, region) values ('Malaria', 'VINE INTERNATIONAL SCHOOL', 'A', 'B', 'Kampala', 'CENTRAL')"
-        # self.cursor.execute(insert_case1)
-
-        # insert_case2 = "INSERT INTO cases (disease, school, parish, sub_county, district, region) values ('Pneumonia', 'VINE INTERNATIONAL SCHOOL', 'A', 'B', 'Kampala', 'CENTRAL')"
-        # self.cursor.execute(insert_case2)
-
-        # insert_case3 = "INSERT INTO cases (disease, school, parish, sub_county, district, region) values ('Typhoid', 'VINE INTERNATIONAL SCHOOL', 'A', 'B', 'Kampala', 'CENTRAL')"
-        # self.cursor.execute(insert_case3)
-
-        # insert_case1 = "INSERT INTO cases (disease, school, parish, sub_county, district, region) values ('Malaria', 'St.Peters Naalya SSS', 'A', 'B', 'Kampala', 'CENTRAL')"
-        # self.cursor.execute(insert_case1)
 
     def insert_user(self, employee_no, user_name, user_email, user_password):
-        insert_user = "INSERT INTO usersTab (employee_no, user_name, user_email, user_password) values ('{}', '{}', '{}', '{}')".format(
+        insert_user = "INSERT INTO users (employee_no, user_name, user_email, user_password) values ('{}', '{}', '{}', '{}')".format(
             employee_no, user_name, user_email, user_password)
         self.cursor.execute(insert_user)
 
     def login_user(self, user_name, user_password):
-        select_user = "SELECT user_name, user_password FROM usersTab WHERE user_name = '{}' and user_password = '{}'".format(
+        select_user = "SELECT user_name, user_password FROM users WHERE user_name = '{}' and user_password = '{}'".format(
             user_name, user_password)
         self.cursor.execute(select_user)
         return [user_name, user_password]
 
     def get_user(self, user_name):
-        get_user = "SELECT * FROM usersTab WHERE user_name = '{}'".format(
+        get_user = "SELECT * FROM users WHERE user_name = '{}'".format(
             user_name)
         self.cursor.execute(get_user)
         result = self.cursor.fetchone()
         return result
 
     def get_users(self):
-        get_users = "SELECT * FROM usersTab"
+        get_users = "SELECT * FROM users"
         self.cursor.execute(get_users)
         result = self.cursor.fetchall()
         return result
@@ -89,10 +48,10 @@ class DatabaseConnection:
         result = self.cursor.fetchall()
         return result
 
-    def get_total_no_of_cases(self):
-        get_total = "SELECT count(*) FROM cases"
+    def get_total_no_of_cases_per_school(self, school):
+        get_total = "SELECT * FROM cases WHERE school = '{}'".format(school)
         self.cursor.execute(get_total)
-        result = self.cursor.fetchone()
+        result = self.cursor.fetchall()
         return result
 
     def get_total_no_of_schools(self):
@@ -116,27 +75,28 @@ class User():
 
 
 class Case():
-    """Users class defining the user model"""
+    """Case class defining the case model"""
 
-    def __init__(self, disease, school, parish, sub_county, district, region):
+    def __init__(self, disease, patient_id, school, parish, sub_county, district, region):
         self.disease = disease
+        self.patient_id = patient_id
         self.school = school
         self.parish = parish
         self.sub_county = sub_county
         self.district = district
         self.region = region
-
-def get_cases(self):
-    get_cases = "SELECT * FROM cases ORDER BY case_no ASC"
-    self.cursor.execute(get_cases)
-    result = self.cursor.fetchall()
-    return result
+# def get_cases(self):
+#     get_cases = "SELECT * FROM cases ORDER BY case_no ASC"
+#     self.cursor.execute(get_cases)
+#     result = self.cursor.fetchall()
+#     return result
 
 
 class User_Controller:
 
     @staticmethod
     def login():
+        """Login a user"""
         user_input = request.get_json(force=True)
         username = user_input.get("user_name")
         password = user_input.get("user_password")
@@ -172,20 +132,38 @@ class Case_Controller:
     @staticmethod
     def get_all_cases():
         cases_list = []
-
+        school_list = []
         cases = db.get_cases()
         for case in cases:
             case_dict = {
                 "case_no": case[0],
                 "disease": case[1],
-                "school": case[2],
-                "parish": case[3],
-                "sub_county": case[4],
-                "district": case[5],
-                "region": case[6]
+                "patient_id": case[2],
+                "school": case[3],
+                "parish": case[4],
+                "sub_county": case[5],
+                "district": case[6]
             }
             cases_list.append(case_dict)
-        return jsonify({'cases': cases_list, 'length': len(cases_list)}), 200
+            if case[3] not in school_list:
+                school_list.append(case[3])
+        return jsonify({'cases': cases_list, 'length': len(cases_list), 'schools': school_list, 'no_of_schs': len(school_list)}), 200
+
+    @staticmethod
+    def get_cases_per_sch(school_name):
+        the_list = []
+        cases = db.get_total_no_of_cases_per_school(school_name)
+        for case in cases:
+            case_dict = {
+                "case_no": case[0],
+                "disease": case[1],
+                "patient_id": case[2],
+                "parish": case[4],
+                "sub_county": case[5],
+                "district": case[6]
+            }
+            the_list.append(case_dict)
+        return jsonify({'cases_per_sch': the_list, 'length': len(the_list)}), 200
 
 
 @app.route('/api/v1/login', methods=['POST'])
@@ -201,6 +179,11 @@ def user_signup():
 @app.route('/api/v1/cases', methods=['GET'])
 def get_all_cases():
     return Case_Controller.get_all_cases()
+
+
+@app.route('/api/v1/<school>/cases', methods=['GET'])
+def get_cases_per_school(school):
+    return Case_Controller.get_cases_per_sch(school)
 
 
 if __name__ == '__main__':
