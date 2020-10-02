@@ -1,5 +1,5 @@
 # School Health Surveillance API
-Set of API endpoints to be consumed by the School Health Surveillance [Dashboard]()
+Set of API endpoints to be consumed by the School Health Surveillance [Dashboard](https://github.com/CryptoSavannah/SHS_with_endpoints/tree/for_review/Dashboard)
 
 [![Build Status](https://travis-ci.org/CryptoSavannah/SHS_with_endpoints.svg?branch=for_review)](https://travis-ci.org/CryptoSavannah/SHS_with_endpoints) [![Maintainability]()]()
 <!-- [![Coverage Status]()]()  -->

@@ -11,12 +11,41 @@ CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
 class DatabaseConnection:
     def __init__(self):
         db = 'shs'
+        if os.getenv('APP_SETTINGS') == 'testing':
+            db = 'test_db'
         conn = psycopg2.connect(
             host="localhost", database=db, user="postgres", password="psql", port=5433)
         conn.autocommit = True
         self.cursor = conn.cursor()
         print(self.cursor)
         print(db)
+
+    def setUp(self):
+
+        users_table = """CREATE TABLE IF NOT EXISTS users(
+              employee_no VARCHAR(25) PRIMARY KEY,
+              user_name VARCHAR(25) UNIQUE NOT NULL,
+              user_email VARCHAR(25) UNIQUE NOT NULL,
+              user_password VARCHAR(225) NOT NULL
+          )"""
+        self.cursor.execute(users_table)
+
+        cases_table = """CREATE TABLE IF NOT EXISTS cases(
+             case_no SERIAL PRIMARY KEY,
+             disease VARCHAR(25) NOT NULL,
+             patient_id VARCHAR(50) NOT NULL,
+             school VARCHAR(50) NOT NULL,
+             parish VARCHAR(25) NOT NULL,
+             sub_county VARCHAR(25) NOT NULL,
+             district VARCHAR(25) NOT NULL
+         )"""
+        self.cursor.execute(cases_table)
+
+        insert_case1 = "INSERT INTO cases (disease, patient_id, school, parish, sub_county, district) values ('Malaria', 'ST78', 'VINE INTERNATIONAL SCHOOL', 'Kungu', 'Nakawa', 'Kampala')"
+        self.cursor.execute(insert_case1)
+        
+        insert_case2 = "INSERT INTO cases (disease, patient_id, school, parish, sub_county, district) values ('Typhoid', 'ST278', 'VINE INTERNATIONAL SCHOOL', 'Kungu', 'Nakawa', 'Kampala')"
+        self.cursor.execute(insert_case2)
 
     def insert_user(self, employee_no, user_name, user_email, user_password):
         insert_user = "INSERT INTO users (employee_no, user_name, user_email, user_password) values ('{}', '{}', '{}', '{}')".format(
@@ -60,6 +89,10 @@ class DatabaseConnection:
         result = self.cursor.fetchone()
         return result
 
+    def delete_tables(self):
+        delete = "DROP TABLE users, cases"
+        self.cursor.execute(delete)
+
 
 db = DatabaseConnection()
 
@@ -85,11 +118,6 @@ class Case():
         self.sub_county = sub_county
         self.district = district
         self.region = region
-# def get_cases(self):
-#     get_cases = "SELECT * FROM cases ORDER BY case_no ASC"
-#     self.cursor.execute(get_cases)
-#     result = self.cursor.fetchall()
-#     return result
 
 
 class User_Controller:
@@ -101,11 +129,15 @@ class User_Controller:
         username = user_input.get("user_name")
         password = user_input.get("user_password")
         user = db.get_user(username)
-        if user:
-            return jsonify({
-                'message': f"You have successfully been logged in as {username}"
-            }), 200
-        return jsonify({'message': f"{username} does not exist"}), 400
+        if user and user[3] == password:
+            select = db.login_user(username, password)
+            if select:
+                return jsonify({
+                    'message': f"You have successfully been logged in as {username}"
+                }), 200
+            return jsonify({'message':'Login Failed, try again'}), 400
+        return jsonify({'message':'Incorrect user name or password'}), 400
+        # return jsonify({'message': f"{username} does not exist"}), 400
 
     @staticmethod
     def sign_up():
