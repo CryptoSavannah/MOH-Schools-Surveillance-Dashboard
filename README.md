@@ -6,8 +6,8 @@ The project offers the following solutions to the named problems:
 
 |PROBLEM                                                             |SOLUTION                                               |
 |--------------------------------------------------------------------|-------------------------------------------------------|
-|1. Governemnts does not currently collect reliable health data from schools. There is no system in place to collect these records electronically. |1. Provision of a trusted way for schools to electronically capture student health data ([mobile app](https://github.com/CryptoSavannah/schools-survailance) running on a tablet/phone) and share the information with the Ministry of Health system(stored on a [Blockchain](https://github.com/CryptoSavannah/HealthSurveillance./tree/master/backend)). 
-|2. Inadequate planning for appropriate interventions in the absence of the critial information mentioned above.  |2. Provision of a [dashboard]() to display both high level and granular statistics on school health data to make informed decisons while aiding the planning process. 
+|1. Government does not currently collect reliable health data from schools. There is no system in place to collect these records electronically. |1. Provision of a trusted way for schools to electronically capture student health data ([mobile app](https://github.com/CryptoSavannah/schools-survailance) running on a tablet/phone) and to share the information with the Ministry of Health system(stored on a [Blockchain](https://github.com/CryptoSavannah/HealthSurveillance./tree/master/backend)). 
+|2. Inadequate planning for appropriate interventions in the absence of the critial information mentioned above.  |2. Provision of a [dashboard](https://github.com/CryptoSavannah/SHS_with_endpoints/tree/for_review/Dashboard) to display both high level and granular statistics on school health data to make informed decisons while aiding the planning process. 
 
 
 ## Copyright and License
