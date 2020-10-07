@@ -8,7 +8,6 @@
         }
     }).then(response => response.json())
         .then(resdata => {
-            console.log(resdata);
             let the_data = resdata.cases;
             let table = $("#the_dataTable").DataTable(
                 {
@@ -23,10 +22,6 @@
                         { data: 'district' }
                     ]
                 });
-            console.log(typeof (table));
-
-            console.log(resdata.schools);
-            console.log(resdata.cases);
             var x = document.getElementById("schools");
             let school;
             let option;
@@ -34,9 +29,7 @@
                 option = document.createElement("option");
                 option.text = resdata.schools[school];
                 option.value = resdata.schools[school];
-                console.log(option.text);
                 x.add(option);
-                document.getElementById("school_name").innerHTML = resdata.schools[0];
             }
 
         })
@@ -50,14 +43,14 @@ function getCasesPerSch(school) {
         }
     }).then(response => response.json())
         .then(resdata => {
-            console.log(resdata);
             let name = document.getElementById("school_name");
             let total = document.getElementById("sch_total");
-            console.log(school);
+            name.innerHTML = school;
+            total.innerHTML = resdata.length;
             if (school === "select") {
-                name.innerHTML = '';
-                total.innerHTML = 'resdata.length';
+                document.getElementById("report").style.display = 'none';
             } else {
+                document.getElementById("report").style.display = 'block';
                 let casedata = [];
                 resdata.cases_per_sch.forEach(a_case => {
                     casedata.push(a_case.disease);
@@ -65,13 +58,23 @@ function getCasesPerSch(school) {
                         a[c] = (a[c] || 0) + 1;
                         return a;
                     }, {});
-                    let maxCount = Math.max(...Object.values(counts));
-                    let mostFrequent = Object.keys(counts).filter(k => counts[k] === maxCount);
-                    console.log(mostFrequent[0]);
-                    document.querySelector('#school_most_prevalent').innerHTML = mostFrequent[0];
+                    let sorted = Object.keys(counts).sort((a, b) => counts[b] - counts[a]);
+                    let sortedNo = Object.values(counts).sort((a, b) => b - a);
+                    let top5 = sorted.slice(0, 3);
+                    let top5No = sortedNo.slice(0, 3);
+                    let percentage = (top5No[0] / (casedata.length) * 100).toFixed(2) + '%';
+                    let percentage2 = (top5No[1] / (casedata.length) * 100).toFixed(2) + '%';
+
+                    document.querySelector('#school_most_prevalent').innerHTML = top5[0];
+                    document.querySelector('#school_most_prevalent_1').innerHTML = top5[0];
+                    document.querySelector('#school_most_prevalent_2').innerHTML = top5[1];
+                    document.getElementById('number2').innerHTML = percentage2;
+                    document.getElementById('percentage').innerHTML = percentage;
+                    document.getElementById('danger').style.width = percentage;
+                    document.getElementById('indicator').style.width = percentage;
+                    document.getElementById('warning').style.width = percentage2;
                 });
             }
-            name.innerHTML = school + ', Parish, Sub-County, District';
-            total.innerHTML = resdata.length;
+
         })
 }
