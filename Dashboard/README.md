@@ -4,9 +4,9 @@ User Dashboard and Admin Console for the School Health Surveillance System.
 
 ## Preview
 
-[![Dashboard Preview]()]()
+![Dashboard Preview](dashboard/img/Index.PNG)
 
-**[Launch Live Preview]()**
+**[Launch Live Preview](https://cryptosavannah.github.io/SHS_with_endpoints/Dashboard/dashboard/)**
 
 ## Status
 
