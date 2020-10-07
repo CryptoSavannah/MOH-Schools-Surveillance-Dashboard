@@ -10,9 +10,10 @@ CORS(app, supports_credentials=True, resources={r"/api/*": {"origins": "*"}})
 
 class DatabaseConnection:
     def __init__(self):
-        db = 'shs'
+        # db = 'shs'
         if os.getenv('APP_SETTINGS') == 'testing':
             db = 'test_db'
+        db = 'shs'
         conn = psycopg2.connect(
             host="localhost", database=db, user="postgres", password="psql", port=5433)
         conn.autocommit = True
@@ -41,11 +42,11 @@ class DatabaseConnection:
          )"""
         self.cursor.execute(cases_table)
 
-        insert_case1 = "INSERT INTO cases (disease, patient_id, school, parish, sub_county, district) values ('Malaria', 'ST78', 'VINE INTERNATIONAL SCHOOL', 'Kungu', 'Nakawa', 'Kampala')"
-        self.cursor.execute(insert_case1)
+        # insert_case1 = "INSERT INTO cases (disease, patient_id, school, parish, sub_county, district) values ('Malaria', 'ST78', 'VINE INTERNATIONAL SCHOOL', 'Kungu', 'Nakawa', 'Kampala')"
+        # self.cursor.execute(insert_case1)
         
-        insert_case2 = "INSERT INTO cases (disease, patient_id, school, parish, sub_county, district) values ('Typhoid', 'ST278', 'VINE INTERNATIONAL SCHOOL', 'Kungu', 'Nakawa', 'Kampala')"
-        self.cursor.execute(insert_case2)
+        # insert_case2 = "INSERT INTO cases (disease, patient_id, school, parish, sub_county, district) values ('Typhoid', 'ST278', 'VINE INTERNATIONAL SCHOOL', 'Kungu', 'Nakawa', 'Kampala')"
+        # self.cursor.execute(insert_case2)
 
     def insert_user(self, employee_no, user_name, user_email, user_password):
         insert_user = "INSERT INTO users (employee_no, user_name, user_email, user_password) values ('{}', '{}', '{}', '{}')".format(

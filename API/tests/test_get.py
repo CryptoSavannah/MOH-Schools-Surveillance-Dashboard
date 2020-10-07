@@ -5,10 +5,10 @@ from API.routes.app import *
 
 
 test_user = {
-    "employee_no": "MOH01233",
-    "user_name": "nana",
-    "user_email": "nana@gmail.com",
-    "user_password": "algorithm"
+    "employee_no": "MOH012933",
+    "user_name": "dave",
+    "user_email": "dave@gmail.com",
+    "user_password": "algorithms"
 }
 
 db = DatabaseConnection()
@@ -32,16 +32,16 @@ class Base(unittest.TestCase):
                                            data=json.dumps(test_user))
         self.assertEqual(create_user.status_code, 201)
         response = json.loads(create_user.data)
-        self.assertEqual(response['message'], 'User nana successfully created')
+        self.assertEqual(response['message'], 'User dave successfully created')
 
     def user_login(self):
-        self.sign_up()
+        # self.sign_up()
         login_user = self.app_client.post('/api/v1/login', content_type='application/json',
-                                          data=json.dumps({"user_name": "nana", "user_password": "algorithm"}))
+                                          data=json.dumps({"user_name": "dave", "user_password": "algorithms"}))
         self.assertEqual(login_user.status_code, 200)
         response = json.loads(login_user.data)
         self.assertEqual(response['message'],
-                         'You have successfully been logged in as nana')
+                         'You have successfully been logged in as dave')
 
 
 class Endpoints(Base):
