@@ -11,14 +11,13 @@
 
     <title>SHS</title>
 
-    <link href="../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-    <link href="../css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../css/custom_css.css">
-    <link rel="icon" href="../img/gov-logo.png">
-
+    <link href="../../css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="../../css/custom_css.css" rel="stylesheet">
+    <link href="../../img/gov_logo.png" rel="icon">
 </head>
 
 <body id="page-top">
@@ -30,9 +29,9 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index1.html">
                 <figure id="top_logo">
-                    <img src="../img/gov-logo.png" alt="" height="80px">
+                    <img src="../../img/gov-logo.png" alt="" height="80px">
                     <figcaption>Ministry of Health</figcaption>
                 </figure>
             </a>
@@ -41,8 +40,14 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="html/admin/index.html">
+                    <i class="fas fa-fw fa-user-secret"></i>
+                    <span>Admin</span></a>
+            </li>
+
             <li class="nav-item">
-                <a class="nav-link" href="../index.html">
+                <a class="nav-link" href="../../index.html">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span></a>
             </li>
@@ -56,13 +61,13 @@
             </div>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="disease_stats.html">
+                <a class="nav-link collapsed" href="../../html/disease_stats.html">
                     <i class="fas fa-fw fa-building-o"></i>
                     <span>Tabular Data</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="school_stats.html">
+                <a class="nav-link collapsed" href="../../html/school_stats.html">
                     <i class="fas fa-fw fa-building-o"></i>
                     <span>Schools</span>
                 </a>
@@ -85,7 +90,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
 
-                        <a class="collapse-item" href="contact_form.html"><i class="fa fa-envelope"
+                        <a class="collapse-item" href="../../html/contact_form.html"><i class="fa fa-envelope"
                                 aria-hidden="true"></i> Send
                             Email</a>
                         <a class="collapse-item" href="#"><i class="fa fa-comments" aria-hidden="true"></i> Live
@@ -105,14 +110,14 @@
                 <div id="collapsePages2" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="feedback_form.html"><i class="fa fa-pencil"
+                        <a class="collapse-item" href="../../html/feedback_form.html"><i class="fa fa-pencil"
                                 aria-hidden="true"></i> Feedback
                             Form</a>
                         <div class="collapse-divider"></div>
                     </div>
                 </div>
             </li>
-            <li class="nav-item active"><a class="nav-link collapsed" href="faqs.html"><i
+            <li class="nav-item"><a class="nav-link collapsed" href="../../html/faqs.html"><i
                         class="fas fa-fw fa-question"></i>
                     <span>FAQ's</span></a></li>
 
@@ -140,17 +145,32 @@
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <!-- Topbar Search -->
+                    <!-- <form
+                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
+                                aria-label="Search" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" type="button">
+                                    <i class="fas fa-search fa-sm"></i>
+                                </button>
+                            </div>
+                        </div>
+                        Admin Console
+                    </form> -->
+                    <!-- <span class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100">Admin
+                        Console</span> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                        <li class="nav-item dropdown no-arrow d-sm-none">
+                        <!-- <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
-                            <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
                                 aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
@@ -166,7 +186,7 @@
                                     </div>
                                 </form>
                             </div>
-                        </li>
+                        </li> -->
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
@@ -262,70 +282,184 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+                    <div class="card shadow mb-4" id="adex1">
+                        <div class="card-header py-3" id="adexChild1">
+                            <h6 class="m-0">Console</h6>
+                        </div>
+                        <div class="card-body">
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h4 class="h3 mb-0 text-gray-800">FREQUENTLY ASKED QUESTION'S</h4>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">1</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>Cases are updated between every 1-2 months</p>
-                                    <p class="mb-0">Ministry of Health under the support of UNICEF...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">2</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>Cases are updated between every 1-2 months</p>
-                                    <p class="mb-0">Ministry of Health under the support of UNICEF...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">3</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>Cases are updated between every 1-2 months</p>
-                                    <p class="mb-0">Ministry of Health under the support of UNICEF...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">4</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>Cases are updated between every 1-2 months</p>
-                                    <p class="mb-0">Ministry of Health under the support of UNICEF...</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 mb-4">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">5</h6>
-                                </div>
-                                <div class="card-body">
-                                    <p>Cases are updated between every 1-2 months</p>
-                                    <p class="mb-0">Ministry of Health under the support of UNICEF...</p>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="container-fluid">
+                    <div class="card shadow mb-4" id="adex">
+                        <div class="card-header py-3" id="adexChild">
+                            <h6 class="m-0"><i class="fas fa-fw fa-plus"></i> Insert Record</h6>
+                        </div>
+                        <div class="card-body">
+                            <!-- Tab links -->
+                            <div class="tab">
+                                <button class="tablinks" onclick="openCity(event, 'User')"
+                                    id="defaultOpen">User</button>
+                                <button class="tablinks" onclick="openCity(event, 'School')">School</button>
+                                <button class="tablinks" onclick="openCity(event, 'Disease')">Disease</button>
+                            </div>
+
+                            <!-- Tab content -->
+                            <div id="User" class="tabcontent">
+                                <hr>
+                                <form action="" class="add">
+                                    <div class="row">
+                                        <div class="col-lg-2 mb-4">
+                                            <label for="eid">Employee ID</label>
+                                            <hr>
+                                            <label for="ename">Employee Name</label>
+                                            <hr>
+                                            <label for="perm">Permissions</label>
+  
+                                        </div>
+                                        <div class="col-lg-6 mb-4">
+                                            <input type="text" id="eid" name="empid" placeholder="MOH/0001">
+                                            <hr>
+                                            <input type="text" id="ename" name="empname" placeholder="Employee name..">
+                                            <br><br><br> 
+                                            <input type="radio" id="user" name="permissions" value="user">
+                                            <label for="user">User</label>
+                                            <input type="radio" id="admin" name="permissions" value="admin">
+                                            <label for="admin">Admin</label>
+                                         
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+
+                            <div id="School" class="tabcontent">
+                                <hr>
+                                <form action="" class="add">
+                                    <div class="row">
+                                        <div class="col-lg-2 mb-4">
+                                            <label for="cnum">Center Number</label>
+                                            <hr>
+                                            <label for="sname">School Name</label>
+                                            <hr>
+                                            <label for="popn">Student Population</label>
+                                            <hr>
+                                            <label for="district">District</label>
+                                            <hr>
+                                            <label for="sub-county">Sub-County</label>
+                                            <hr>
+                                            <label for="parish">Parish</label>
+                                            <hr>
+                                            <label for="village">Village</label>
+                                            <hr>
+                                        </div>
+                                        <div class="col-lg-6 mb-4">
+                                            <input type="text" id="cnum" name="centerno" placeholder="SCH/0001">
+                                            <hr>
+                                            <input type="text" id="sname" name="schoolname" placeholder="School name..">
+                                            <hr>
+                                            <input type="number" id="popn" name="population" placeholder="Enter Number">
+                                            <hr>
+                                            <select class="btn dropdown-toggle" name="district" id="district">
+                                                <option value="select">--SELECT District--</option>
+                                            </select>
+                                            <hr>
+                                            <hr>
+                                            <select class="btn dropdown-toggle" name="sub-county" id="sub-county">
+                                                <option value="select">--SELECT Sub-County--</option>
+                                            </select>
+                                            <hr>
+                                            <!-- <hr> -->
+                                            <select class="btn dropdown-toggle" name="parish" id="parish">
+                                                <option value="select">--SELECT Parish--</option>
+                                            </select>
+                                            <hr>
+                                            <hr>
+                                            <select class="btn dropdown-toggle" name="village" id="village">
+                                                <option value="select">--SELECT Village--</option>
+                                            </select>
+
+
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+
+                            <div id="Disease" class="tabcontent">
+                                <hr>
+                                <form action="" class="add">
+                                    <div class="row">
+                                        <div class="col-lg-2 mb-4">
+                                            <label for="dId">Identifier</label>
+                                            <hr>
+                                            <label for="dname">Disease Name</label>
+                                            <hr>
+                                            <label for="dType">Type</label>
+                                            <hr>
+                                            <label for="causes">Possible Causes</label>
+                                            <hr>
+                                            <label for="symptoms">Dominant Symptoms</label>
+                                            <hr>
+                                            <label for="treatment">Treatment</label>
+                                            <hr>
+                                        </div>
+                                        <div class="col-lg-6 mb-4">
+                                            <input type="text" id="dId" name="dId" placeholder="A001">
+                                            <hr>
+                                            <input type="text" id="dname" name="dname" placeholder="Disease name">
+                                            <br><br><br>
+                                            <select class="btn dropdown-toggle" name="dType" id="dType">
+                                                <option value="defic">Deficiency</option>
+                                                <option value="infec">Infectious</option>
+                                                <option value="hered">Hereditary</option>
+                                                <option value="physio">Physiological</option>
+                                            </select>
+                                            <br><br><br>
+                                            <input type="checkbox" id="bacteria" name="bacteria" value="bacteria">
+                                            <label for="bacteria"> Bacteria</label>
+                                            <input type="checkbox" id="fungi" name="fungi" value="fungi">
+                                            <label for="fungi"> Fungi</label>
+                                            <input type="checkbox" id="parasite" name="parasite" value="parasite">
+                                            <label for="parasite"> Parasite</label>
+                                            <input type="checkbox" id="virus" name="virus" value="virus">
+                                            <label for="virus"> Virus</label>
+                                            <hr>
+                                            <input type="text" id="symptoms" name="symptoms" placeholder="Enter comma separated symptions e.g. 'Headache, Vomiting, Nausea'">
+                                            <hr><br>
+                                            <select class="btn dropdown-toggle" name="districts" id="districts">
+                                                <option value="select">Antiflammatory</option>
+                                                <option value="select">Antibiotics</option>
+                                                <option value="select">Antibacterials</option>
+                                                <option value="select">Antimalarials</option>
+                                            </select>
+                                            <hr>
+
+                                        </div>
+                                    </div>
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                    <!-- Page Heading -->
+                    <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800">Admin Console</h1>
+                    </div> -->
+
+
+
+
+                </div>
+
+                
             </div>
 
             <footer class="sticky-footer bg-white">
@@ -352,24 +486,28 @@
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Select "Logout" to end your current session.</div>
+                <div class="modal-body">Are you sure you want to logout?</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Yes</a>
+                    <a class="btn btn-primary" href="../../html/login.html">Yes</a>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="../../vendor/jquery/jquery.min.js"></script>
+    <script src="../../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../../vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="../js/sb-admin-2.min.js"></script>
+    <script src="../../js/sb-admin-2.min.js"></script>
+    <script src="../../js/admin_index.js"></script>
+
+
+
 
 </body>
 

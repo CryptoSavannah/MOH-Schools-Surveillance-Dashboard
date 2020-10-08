@@ -106,17 +106,39 @@ input[type=text], input[type=email], select, textarea {
   resize: vertical;
 }
 
+.add input[type=text], .add input[type=email], .add select, .add textarea {
+  width: 100%;
+  padding: 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 0;
+  margin-bottom: 0;
+  resize: vertical;
+}
+/* input[type=text], input[type=email], input[type=number], select, textarea {
+  width: 40%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+} */
+
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: #224abe;
   color: white;
-  padding: 12px 20px;
+  padding: 6px 14px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  /* float: right; */
 }
 
 input[type=submit]:hover {
-  background-color: #45a049;
+  background-color: #171c3a;
 }
 
 .container {
@@ -144,14 +166,59 @@ input[type=submit]:hover {
 }
 
 #percentage, #number2 {
-  /* font-family: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
   font-size: 80%;
   font-weight: 700;
 }
 
 #map {
   height: 400px;
-  /* The height is 400 pixels */
   width: 100%;
-  /* The width is the width of the web page */
+}
+
+/* .submitBtn {
+  background-color: #c81c72;
+} */
+
+#adex {
+ border-radius: 0%;
+}
+
+#adex, #adex1, #adexChild, #adexChild1 {
+  background-color: #21263c;
+}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons that are used to open the tab content */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
 }
